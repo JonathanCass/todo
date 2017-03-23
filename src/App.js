@@ -18,37 +18,35 @@ var styles = {
 var App=React.createClass({
   getInitialState: function() {
     return {
-      itemsList : [
-        'Wake Up',
-        'Brush Teeth',
-        'Pet Bird',
-        'Exercise'
-      ], 
-      itemString : ''
-    } 
+      list: ['One','Two','Three','Four'],
+      text: ''
+    }
   },
-  submit: function(e){
+  handleChange: function(e) {
+    this.setState({
+      text: e.target.value
+    })
+  },
+
+  handleSubmit: function(e) {
     e.preventDefault()
-    var itemsList = this.state.itemsList.slice()
-    var addedItem = event.target.value
-    console.log(itemsList,'itemstlist',event.target.eventInput, addedItem)
-    itemsList.push(addedItem)
-    this.setState({ itemsList: itemsList})
+    this.setState({
+      list: [this.state.text, ...this.state.list],
+      text: ''
+    })
   },
-  textInput: function(e){
-    this.setState({ itemString: e.target.value })
-  },
-  render: function() {
+
+  render: function () {
     return (
       <div className="App" style={styles.centerBox}>
-        <form className="inputForm" onSubmit={this.submit}>
-          <input style={styles.input} type="text" className="inputBox" name="eventInput" placeholder="Enter Item To Do Here" onChange={this.textInput} /><br />
+        <form onSubmit={this.handleSubmit}>
+          <input type="text" onChange={this.handleChange} value={this.state.text} />
         </form>
-          <ul>
-            {this.state.itemsList.map(function(item,i){
+        <ul>
+            {this.state.list.map(function(item,i){
             return <li key={i}>{item}</li>                 
           })}
-            <li>{this.state.itemString}</li>
+            <li>{this.state.text}</li>
         </ul>
       </div>
     )
