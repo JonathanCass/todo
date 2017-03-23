@@ -27,11 +27,10 @@ var App=React.createClass({
       itemString : ''
     } 
   },
-  
   submit: function(e){
     e.preventDefault()
     var itemsList = this.state.itemsList.slice()
-    var addedItem = event.target.eventInput
+    var addedItem = event.target.value
     console.log(itemsList,'itemstlist',event.target.eventInput, addedItem)
     itemsList.push(addedItem)
     this.setState({ itemsList: itemsList})
@@ -43,7 +42,7 @@ var App=React.createClass({
     return (
       <div className="App" style={styles.centerBox}>
         <form className="inputForm" onSubmit={this.submit}>
-          <input style={styles.input} type="text" className="inputBox" name="eventInput" placeholder="Enter Item To Do Here" onChange={this.textInput}/><br />
+          <input style={styles.input} type="text" className="inputBox" name="eventInput" placeholder="Enter Item To Do Here" onChange={this.textInput} /><br />
         </form>
           <ul>
             {this.state.itemsList.map(function(item,i){
