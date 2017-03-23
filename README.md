@@ -4,9 +4,9 @@ List out those items immediately below and be available when the page is refresh
 
 Normal Mode Requirements:  
 Be able to mark an item as complete
-Be able to remove an item (complete or not) from the list  
+Be able to remove an item (complete or not) from the list.  
 
 Hard Mode Requirements:  
-Filters for Items(complete or not), completed items and active items  
-Button to remove all completed items from the list  
+Filters for Items(complete or not), completed items and active items.  
+Button to remove all completed items from the list.  
 Example provided in assignment.

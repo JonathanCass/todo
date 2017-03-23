@@ -10,7 +10,9 @@ var App = React.createClass({
   render: function() {
     return (
       <div className="App">
-        <p>Test Text</p>
+        <form className="inputForm">
+          <input type ="text" className ="inputBox" placeholder ="Enter Item To Do Here"/><br />
+        </form>
       </div>
     )
   }
