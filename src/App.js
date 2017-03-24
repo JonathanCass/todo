@@ -1,18 +1,22 @@
 import React from 'react'
 import './App.css'
 
-var styles = {
+var styles={
   input: {
     fontSize: 14,
-    color: 'red',
     height: 40,
-    width: 400 
+    width: 200 
   },
   centerBox: {
     position: 'fixed',
     top: '40%',
     left: '50%',
     transform: 'translate(-50%, -50%)'
+  },
+  listText:{
+    fontSize:20,
+    fontWeight: 'lighter',
+    listStyle: 'none'
   }
 }
 var App=React.createClass({
@@ -40,11 +44,11 @@ var App=React.createClass({
     return (
       <div className="App" style={styles.centerBox}>
         <form onSubmit={this.handleSubmit}>
-          <input type="text" onChange={this.handleChange} value={this.state.text} />
+          <input type="text" onChange={this.handleChange} value={this.state.text} style={styles.input} />
         </form>
-        <ul>
+        <ul style={styles.listText}>
             {this.state.list.map(function(item,i){
-            return <li key={i}>{item}</li>                 
+            return <li key={item}><input class ="deleteButton" type="radio" value={item} ></input>{item}</li>                 
           })}
         </ul>
       </div>
