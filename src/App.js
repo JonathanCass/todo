@@ -59,13 +59,22 @@ var App=React.createClass({
       completed: [...this.state.completed, this.state.list[e.target.value]]  
     })
   },
-  /*handleRemoveCompleted: function(e) {
-    this.setState({
-      list: this.state.list.filter(function(item){
-        return item !== e.target.value
-      })
+
+  handleClear(e) {
+    console.log('completed', this.state.completed)
+    console.log('list', this.state.list)
+    var completedSplice = this.state.completed.splice()
+    console.log('completed Splice', completedSplice)
+    var listSplice = this.state.list.splice()
+    console.log('list Splice', listSplice)
+    var filteredList = listSplice.filter(function (item){
+      return (completedSplice.indexOf(item) > -1 )
     })
-  },*/
+    console.log('filtered List', filteredList)
+    this.setState({
+      list: filteredList
+    })
+  },
   render() {
     return (
       <div className="App" style={styles.centerBox}>
@@ -73,15 +82,16 @@ var App=React.createClass({
           <input type="text" onChange={this.handleChange} value={this.state.text} style={styles.input} />
         </form>
         <ul style={styles.listText}>
-            {this.state.list.map(function(item,i){
-              if(this.state.completed.indexOf(item) !== -1){
-                return <li style={styles.complete} key={i}><input className="deleteButton" type="radio" value={i} onClick={this.handleClick}></input>{item}</li>                 
-              }
-              else{
-                return <li style={styles.active} key={i}><input className="deleteButton" type="radio" value={i} onClick={this.handleClick}></input>{item}</li>
-              }
+          {this.state.list.map(function(item,i){
+            if(this.state.completed.indexOf(item) !== -1){
+              return <li style={styles.complete} key={i}><input className="deleteButton" type="radio" value={i} onClick={this.handleClick}></input>{item}</li>                 
+             }
+             else{
+              return <li style={styles.active} key={i}><input className="deleteButton" type="radio" value={i} onClick={this.handleClick}></input>{item}</li>
+            }
           }.bind(this))}
         </ul>
+        <button type="button" onClick={this.handleClear}>Clear Completed</button>
       </div>
     )
   }
