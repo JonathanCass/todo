@@ -29,7 +29,7 @@ var styles={
     color: 'green'
   },
   complete:{
-    color: 'grey'
+    color: 'red'
   }
 }
 var App=React.createClass({
@@ -61,18 +61,11 @@ var App=React.createClass({
   },
 
   handleClear(e) {
-    console.log('completed', this.state.completed)
-    console.log('list', this.state.list)
-    var completedSplice = this.state.completed.splice()
-    console.log('completed Splice', completedSplice)
-    var listSplice = this.state.list.splice()
-    console.log('list Splice', listSplice)
-    var filteredList = listSplice.filter(function (item){
-      return (completedSplice.indexOf(item) > -1 )
-    })
-    console.log('filtered List', filteredList)
     this.setState({
-      list: filteredList
+      completed: [],
+      list: this.state.list.filter((item)=>{
+        return(this.state.completed.indexOf(item) < 0)
+      })
     })
   },
   render() {
@@ -83,11 +76,11 @@ var App=React.createClass({
         </form>
         <ul style={styles.listText}>
           {this.state.list.map(function(item,i){
-            if(this.state.completed.indexOf(item) !== -1){
-              return <li style={styles.complete} key={i}><input className="deleteButton" type="radio" value={i} onClick={this.handleClick}></input>{item}</li>                 
+            if(this.state.completed.indexOf(item) > -1 ){
+              return <li style={styles.complete} key={i}><input className="deleteButton" type="checkBox" value={i} onChange={this.handleClick}></input>{item}</li>                 
              }
              else{
-              return <li style={styles.active} key={i}><input className="deleteButton" type="radio" value={i} onClick={this.handleClick}></input>{item}</li>
+              return <li style={styles.active} key={i}><input className="deleteButton" type="checkBox" value={i} onChange={this.handleClick}></input>{item}</li>
             }
           }.bind(this))}
         </ul>
