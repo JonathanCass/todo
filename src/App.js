@@ -18,9 +18,9 @@ var styles = {
 var App=React.createClass({
   getInitialState: function() {
     return {
-      list: ['One','Two','Three','Four'],
+      list: [],
       text: ''
-    }
+    } 
   },
   handleChange: function(e) {
     this.setState({
@@ -31,7 +31,7 @@ var App=React.createClass({
   handleSubmit: function(e) {
     e.preventDefault()
     this.setState({
-      list: [this.state.text, ...this.state.list],
+      list: [...this.state.list, this.state.text],
       text: ''
     })
   },
@@ -46,7 +46,6 @@ var App=React.createClass({
             {this.state.list.map(function(item,i){
             return <li key={i}>{item}</li>                 
           })}
-            <li>{this.state.text}</li>
         </ul>
       </div>
     )
