@@ -51,6 +51,7 @@ var App=React.createClass({
     e.preventDefault()
     this.setState({
       list: [...this.state.list, this.state.text],
+      display: [...this.state.display, this.state.text],
       text: ''
     })
   },
@@ -62,25 +63,32 @@ var App=React.createClass({
   },
 
   handleClear(e) {
+    var clearArray = this.state.list.filter((item)=>{
+      return(this.state.completed.indexOf(item) < 0)
+    })
     this.setState({
       completed: [],
-      list: this.state.list.filter((item)=>{
-        return(this.state.completed.indexOf(item) < 0)
-      })
+      list: clearArray,
+      display: clearArray
     })
   },
   handleShowActive(e) {
     this.setState({
-      list: this.state.list.filter((item)=>{
+      display: this.state.list.filter((item)=>{
         return(this.state.completed.indexOf(item) < 0)
       })
     })
   },
   handleShowCompleted(e) {
     this.setState({
-      list: this.state.list.filter((item)=>{
+      display: this.state.list.filter((item)=>{
         return(this.state.completed.indexOf(item) > -1)
       })
+    })
+  },
+  handleShowAll(e) {
+    this.setState({
+      display: this.state.list
     })
   },
   render() {
@@ -90,7 +98,7 @@ var App=React.createClass({
           <input type="text" onChange={this.handleChange} value={this.state.text} style={styles.input} />
         </form>
         <ul style={styles.listText}>
-          {this.state.list.map(function(item,i){
+          {this.state.display.map(function(item,i){
             if(this.state.completed.indexOf(item) > -1 ){
               return <li style={styles.complete} key={i}><input className="deleteButton" type="checkBox" value={i} onChange={this.handleClick}></input>{item}</li>                 
              }
