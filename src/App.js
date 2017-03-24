@@ -24,22 +24,29 @@ var styles={
     fontSize:20,
     fontWeight: 'lighter',
     listStyle: 'none'
+  },
+  active:{
+    color: 'green'
+  },
+  complete:{
+    color: 'grey'
   }
 }
 var App=React.createClass({
   getInitialState: function() {
     return {
       list: [],
+      completed: [],
       text: ''
     } 
   },
-  handleChange: function(e) {
+  handleChange(e) {
     this.setState({
       text: e.target.value
     })
   },
 
-  handleSubmit: function(e) {
+  handleSubmit(e) {
     e.preventDefault()
     this.setState({
       list: [...this.state.list, this.state.text],
@@ -47,15 +54,19 @@ var App=React.createClass({
     })
   },
 
-  handleClick: function(e) {
+  handleClick(e) {
+    this.setState({
+      completed: [...this.state.completed, this.state.list[e.target.value]]  
+    })
+  },
+  /*handleRemoveCompleted: function(e) {
     this.setState({
       list: this.state.list.filter(function(item){
         return item !== e.target.value
       })
     })
-
-  },
-  render: function () {
+  },*/
+  render() {
     return (
       <div className="App" style={styles.centerBox}>
         <form onSubmit={this.handleSubmit}>
@@ -63,7 +74,12 @@ var App=React.createClass({
         </form>
         <ul style={styles.listText}>
             {this.state.list.map(function(item,i){
-            return <li key={item}><input className="deleteButton" type="radio" value={item} onClick={this.handleClick}></input>{item}</li>                 
+              if(this.state.completed.indexOf(item) !== -1){
+                return <li style={styles.complete} key={i}><input className="deleteButton" type="radio" value={i} onClick={this.handleClick}></input>{item}</li>                 
+              }
+              else{
+                return <li style={styles.active} key={i}><input className="deleteButton" type="radio" value={i} onClick={this.handleClick}></input>{item}</li>
+              }
           }.bind(this))}
         </ul>
       </div>
