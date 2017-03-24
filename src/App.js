@@ -3,18 +3,18 @@ import './App.css'
 
 var styles={
   input: {
-    background: 'black',
-    color: 'green',
+    background: 'white',
+    color: 'black',
     fontSize: 20,
-    height: 40,
-    width: 200 
+    height: 65,
+    width: 550 
   },
   centerBox: {
     color: 'green',
-    background: 'black',
-    borderColor: 'red',
-    borderWidth: '1px',
-    borderStyle: 'solid',
+    background: 'white',
+    borderStyle:'solid',
+    borderColor: '#DBDBDB',
+    borderWidth: '2px',
     position: 'fixed',
     top: '40%',
     left: '50%',
@@ -23,13 +23,29 @@ var styles={
   listText:{
     fontSize:20,
     fontWeight: 'lighter',
-    listStyle: 'none'
+    listStyle: 'none',
+    padding:0,
+    margin:0,
+    borderStyle:'solid',
+    borderColor: '#DBDBDB',
+    borderWidth: '1px'
   },
   active:{
-    color: 'green'
+    borderStyle:'solid',
+    borderColor: '#DBDBDB',
+    borderWidth: '1px',
+    color: '#4C4C4C',
+    height: 65,
+    width: 550 
   },
   complete:{
-    color: 'red'
+    textDecoration : 'line-through',
+    borderStyle:'solid',
+    borderColor: '#DBDBDB',
+    borderWidth: '1px',
+    color: '#DBDBDB',
+    height: 65,
+    width: 550 
   }
 }
 var App=React.createClass({
