@@ -37,6 +37,7 @@ var App=React.createClass({
     return {
       list: [],
       completed: [],
+      display: [],
       text: ''
     } 
   },
@@ -68,6 +69,20 @@ var App=React.createClass({
       })
     })
   },
+  handleShowActive(e) {
+    this.setState({
+      list: this.state.list.filter((item)=>{
+        return(this.state.completed.indexOf(item) < 0)
+      })
+    })
+  },
+  handleShowCompleted(e) {
+    this.setState({
+      list: this.state.list.filter((item)=>{
+        return(this.state.completed.indexOf(item) > -1)
+      })
+    })
+  },
   render() {
     return (
       <div className="App" style={styles.centerBox}>
@@ -84,6 +99,9 @@ var App=React.createClass({
             }
           }.bind(this))}
         </ul>
+        <button type="button" onClick={this.handleShowAll}>All</button>
+        <button type="button" onClick={this.handleShowActive}>Active</button>
+        <button type="button" onClick={this.handleShowCompleted}>Completed</button>
         <button type="button" onClick={this.handleClear}>Clear Completed</button>
       </div>
     )
