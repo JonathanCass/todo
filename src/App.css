@@ -4,9 +4,6 @@ html {
 *, *:before, *:after {
   box-sizing: inherit;
 }
-.itemsLeft:focus{
-	outline:0;
-}
 .clearCompleted:focus{
 	outline:0;
 }
@@ -14,10 +11,13 @@ html {
 	text-decoration: underline;
 }
 .bottomButton:focus{
-	outline: 0;
 	color: red;
 	font-weight: bold;
 	text-decoration: underline;
+}
+.bottomButton:hover{
+	color: red;
+	font-weight: bold;
 }
 .listEntry{
     padding: 20px;
@@ -27,7 +27,7 @@ html {
     overflow: hidden;
     border-style:solid;
     border-color: #DBDBDB;
-    border-width: 0 0 1px 0;
+    border-width: 2px 0 0 0;
 }
 .inputBar:hover{
 	outline: 0;
@@ -38,5 +38,11 @@ html {
 .bottomBar{
 	border-style:solid;
     border-color: #DBDBDB;
-    border-width: 1px 0 0 0;
+    border-width: 2px 0 0 0;
+}
+button:focus{
+	outline: 0;
+}
+.deleteButton:hover{
+	color:red;
 }

@@ -25,20 +25,19 @@ var styles={
     fontWeight: 'bold',
     fontSize: 40,
     marginTop: 40,
-    color: '#5E194F',
+    color: '#660000',
     marginBottom: 0
   },
   input: {
     background: 'white',
     color: 'black',
-    fontSize: 24,
+    fontSize: 26,
     paddingLeft: 20,
     height: 65,
     width: 550,
     border: 0
   },
   centerBox: {
-    background: 'red',
     width: 550,
     boxShadow: '10px 10px 5px grey',
     marginTop: 20
@@ -81,7 +80,7 @@ var styles={
     display: 'flex',
     justifyContent: 'space-between',
     width: 550,
-    height: 40,
+    height: 42,
     background: 'white',
   },
   noPointer: {
@@ -93,16 +92,19 @@ var styles={
     cursor: 'default'
   },
   deleteButton:{
-    position:'relative',
-    right: '-400px'
+    float: 'right',
+    border: 0,
+    fontSize: 20,
+    background: 'white',
+    cursor: 'pointer'
   }
 }
 var App=React.createClass({
   getInitialState: function() {
     return {
-      list: [],
+      list: ['Exercise','Pet Bird','Make lunch','Take Shower'],
       completed: [],
-      display: [],
+      display: ['Exercise','Pet Bird','Make lunch','Take Shower'],
       text: ''
     } 
   },
@@ -167,10 +169,10 @@ var App=React.createClass({
           <ul style={styles.listText}>
             {this.state.display.map(function(item,i){
               if(this.state.completed.indexOf(item) > -1 ){
-                return <li style={styles.complete} className="listEntry" key={i}><input type="checkBox" style={styles.boxCheck} value={i} onChange={this.handleClick}></input>{item}<button style={styles.deleteButton}></button></li>                 
+                return <li style={styles.complete} className="listEntry" key={i}><input type="checkBox" style={styles.boxCheck} value={i} onChange={this.handleClick}></input>{item}<button className="deleteButton" style={styles.deleteButton}>X</button></li>                 
                }
                else{
-                return <li style={styles.active} className="listEntry" key={i}><input type="checkBox" style={styles.boxCheck} value={i} onChange={this.handleClick}></input>{item}<button style={styles.deleteButton}></button></li>
+                return <li style={styles.active} className="listEntry" key={i}><input type="checkBox" style={styles.boxCheck} value={i} onChange={this.handleClick}></input>{item}<button className="deleteButton" style={styles.deleteButton}>X</button></li>
               }
             }.bind(this))}
           </ul>
