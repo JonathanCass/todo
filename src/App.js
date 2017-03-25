@@ -123,7 +123,7 @@ var App=React.createClass({
     })
   },
 
-  handleClick(e) {
+  handleCheck(e) {
     this.setState({
       completed: [...this.state.completed, this.state.list[e.target.value]]  
     })
@@ -137,6 +137,19 @@ var App=React.createClass({
       completed: [],
       list: clearArray,
       display: clearArray
+    })
+  },
+  handleDelete(e) {
+    this.setState({
+      completed: this.state.completed.filter((item)=>{
+        return(item !== this.state.list[e.target.value])
+      }),
+      list: this.state.list.filter((item)=>{
+        return(item !== this.state.list[e.target.value])
+      }),
+      display: this.state.display.filter((item)=>{
+        return(item !== this.state.list[e.target.value])
+      })
     })
   },
   handleShowActive(e) {
@@ -169,10 +182,10 @@ var App=React.createClass({
           <ul style={styles.listText}>
             {this.state.display.map(function(item,i){
               if(this.state.completed.indexOf(item) > -1 ){
-                return <li style={styles.complete} className="listEntry" key={i}><input type="checkBox" style={styles.boxCheck} value={i} onChange={this.handleClick}></input>{item}<button className="deleteButton" style={styles.deleteButton}>X</button></li>                 
+                return <li style={styles.complete} className="listEntry" key={i}><input type="checkBox" style={styles.boxCheck} value={i} onChange={this.handleCheck}></input>{item}<button className="deleteButton" style={styles.deleteButton} onClick={this.handleDelete} value={i}>X</button></li>                 
                }
                else{
-                return <li style={styles.active} className="listEntry" key={i}><input type="checkBox" style={styles.boxCheck} value={i} onChange={this.handleClick}></input>{item}<button className="deleteButton" style={styles.deleteButton}>X</button></li>
+                return <li style={styles.active} className="listEntry" key={i}><input type="checkBox" style={styles.boxCheck} value={i} onChange={this.handleCheck}></input>{item}<button className="deleteButton" style={styles.deleteButton} onClick={this.handleDelete} value={i}>X</button></li>
               }
             }.bind(this))}
           </ul>
