@@ -10,8 +10,7 @@ var styles={
     width: 550 
   },
   centerBox: {
-    color: 'green',
-    background: 'white',
+    background: 'grey',
     borderStyle:'solid',
     borderColor: '#DBDBDB',
     borderWidth: '2px',
@@ -31,6 +30,7 @@ var styles={
     borderWidth: '1px'
   },
   active:{
+    background: 'white',
     borderStyle:'solid',
     borderColor: '#DBDBDB',
     borderWidth: '1px',
@@ -39,6 +39,7 @@ var styles={
     width: 550 
   },
   complete:{
+    background: 'white',
     textDecoration : 'line-through',
     borderStyle:'solid',
     borderColor: '#DBDBDB',
@@ -46,6 +47,16 @@ var styles={
     color: '#DBDBDB',
     height: 65,
     width: 550 
+  },
+  buttonRow:{
+    display: 'flex',
+    justifyContent: 'center',
+    height: 40,
+    width: 550,
+    background: 'white'
+  },
+  clearCompletedButton: {
+  
   }
 }
 var App=React.createClass({
@@ -111,7 +122,7 @@ var App=React.createClass({
     return (
       <div className="App" style={styles.centerBox}>
         <form onSubmit={this.handleSubmit}>
-          <input type="text" onChange={this.handleChange} value={this.state.text} style={styles.input} />
+          <input type="text" onChange={this.handleChange} value={this.state.text} style={styles.input} placeholder="What needs to be done?" />
         </form>
         <ul style={styles.listText}>
           {this.state.display.map(function(item,i){
@@ -123,10 +134,12 @@ var App=React.createClass({
             }
           }.bind(this))}
         </ul>
-        <button type="button" onClick={this.handleShowAll}>All</button>
-        <button type="button" onClick={this.handleShowActive}>Active</button>
-        <button type="button" onClick={this.handleShowCompleted}>Completed</button>
-        <button type="button" onClick={this.handleClear}>Clear Completed</button>
+        <div style={styles.buttonRow}>
+          <button type="button" onClick={this.handleShowAll}>All</button>
+          <button type="button" onClick={this.handleShowActive}>Active</button>
+          <button type="button" onClick={this.handleShowCompleted}>Completed</button>
+          <button type="button" style={styles.clearCompletedButton} onClick={this.handleClear}>Clear Completed</button>
+        </div>
       </div>
     )
   }
