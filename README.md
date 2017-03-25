@@ -1,3 +1,22 @@
+Features:
+Inputing list items working.
+Marking items complete working.   
+All , Active, and Completed Filters working.   
+Clear Completed button working. 
+Delete item button working.     
+Items left counter working.
+Flexible list length.   
+
+Known Issues:  
+Requires unique names, likely solution - throw error and require new name on attempt to input nonunique name.  
+
+If the completed filter is active when the clear completed button is clicked the display automatically shows active items with no filter selected, likely solution - unknown at this time.
+
+The check box status ie checkd unchecked is all over the place. Not sure how to fix that either. 
+
+If the list item inputted is unusually long it results in a poor result, likely solution - re find how to get the scroll working.
+
+Instructions:  
 Build a To do application using React  
 Allow entering in new items (text).    
 List out those items immediately below and be available when the page is refreshed.  

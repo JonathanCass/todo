@@ -3,13 +3,13 @@ import './App.css'
 
 var styles={
   app: {
-    background: '#F4F4F4',
+    background: '#CBCED3',
     padding: 30,
     paddingTop: 10,
     margin: 'auto',
     width: 610,
     fontSize: 40,
-    color: '#EAD7D7',
+    color: '#B2ACAB',
     borderRadius: 30
   },
   title:{
@@ -31,7 +31,7 @@ var styles={
   input: {
     background: 'white',
     color: 'black',
-    fontSize: 26,
+    fontSize: 23,
     paddingLeft: 20,
     height: 65,
     width: 550,
@@ -43,7 +43,7 @@ var styles={
     marginTop: 20
   },
   listText:{
-    fontSize:24,
+    fontSize:19,
     fontWeight: 'lighter',
     listStyle: 'none',
     padding:0,
@@ -102,10 +102,11 @@ var styles={
 var App=React.createClass({
   getInitialState: function() {
     return {
-      list: ['Exercise','Pet Bird','Make lunch','Take Shower'],
+      list: ['These items.','Are examples.','Provided for.','Testing purposes.'],
       completed: [],
-      display: ['Exercise','Pet Bird','Make lunch','Take Shower'],
-      text: ''
+      display: ['These items.','Are examples.','Provided for.','Testing purposes.'],
+      text: '',
+      itemsRemaining: 0
     } 
   },
   handleChange(e) {
@@ -174,7 +175,7 @@ var App=React.createClass({
   render() {
     return (
       <div className="App" style={styles.app}>
-        <p style={styles.title}> todos </p>
+        <p style={styles.title}> To Do: </p>
         <div style={styles.centerBox}>
           <form onSubmit={this.handleSubmit}>
             <input type="text" onChange={this.handleChange} value={this.state.text} style={styles.input} className="inputBar" placeholder="What needs to be done?" />
@@ -190,7 +191,7 @@ var App=React.createClass({
             }.bind(this))}
           </ul>
           <div style={styles.bottomBar} className="bottomBar">
-            <button type="button" style={styles.noPointer} className="itemsLeft">Items left</button>
+            <button type="button" style={styles.noPointer} className="itemsLeft">{this.state.list.length-this.state.completed.length} Items Left</button>
             <div style={styles.buttonRow}>
               <button type="button" style={styles.bottomButton} className="bottomButton" onClick={this.handleShowAll}>All</button>
               <button type="button" style={styles.bottomButton} className="bottomButton" onClick={this.handleShowActive}>Active</button>
@@ -205,4 +206,4 @@ var App=React.createClass({
   }
 })
 
-export default App;
+export default App
