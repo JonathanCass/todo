@@ -9,7 +9,7 @@ var styles={
     margin: 'auto',
     width: 610,
     fontSize: 40,
-    color: '#EAD7D7',
+    //color: '#EAD7D7',
     borderRadius: 30
   },
   title:{
@@ -57,25 +57,11 @@ var styles={
     borderWidth: '1px'
   },
   active:{
-    padding: 20,
-    background: 'white',
-    borderStyle:'solid',
-    borderColor: '#DBDBDB',
-    borderWidth: '1px',
-    color: '#4C4C4C',
-    height: 65,
-    width: 550,
+    color: '#4C4C4C'
   },
   complete:{
-    padding: 20,
-    background: 'white',
-    textDecoration : 'line-through',
-    borderStyle:'solid',
-    borderColor: '#DBDBDB',
-    borderWidth: '1px',
-    color: '#DBDBDB',
-    height: 65,
-    width: 550,
+    textDecoration : 'line-through',  
+    color: '#DBDBDB' 
   },
   boxCheck:{
     marginRight: 20,
@@ -94,7 +80,8 @@ var styles={
     background: 'white',
     border: 0,
     padding: 10,
-    fontSize: 12
+    fontSize: 12,
+    cursor: 'pointer'
   },
   bottomBar: {
     display: 'flex',
@@ -102,6 +89,14 @@ var styles={
     width: 550,
     height: 40,
     background: 'white'
+  },
+  noPointer: {
+    height:40,
+    background: 'white',
+    border: 0,
+    padding: 10,
+    fontSize: 12,
+    cursor: 'default'
   }
 }
 var App=React.createClass({
@@ -174,21 +169,21 @@ var App=React.createClass({
           <ul style={styles.listText}>
             {this.state.display.map(function(item,i){
               if(this.state.completed.indexOf(item) > -1 ){
-                return <li style={styles.complete} key={i}><input type="checkBox" style={styles.boxCheck} value={i} onChange={this.handleClick}></input>{item}</li>                 
+                return <li style={styles.complete} className="listEntry" key={i}><input type="checkBox" style={styles.boxCheck} value={i} onChange={this.handleClick}></input>{item}</li>                 
                }
                else{
-                return <li style={styles.active} key={i}><input type="checkBox" style={styles.boxCheck} value={i} onChange={this.handleClick}></input>{item}</li>
+                return <li style={styles.active} className="listEntry" key={i}><input type="checkBox" style={styles.boxCheck} value={i} onChange={this.handleClick}></input>{item}</li>
               }
             }.bind(this))}
           </ul>
           <div style={styles.bottomBar}>
-            <button type="button" style={styles.bottomButton}>Items left</button>
+            <button type="button" style={styles.noPointer} className="itemsLeft">Items left</button>
             <div style={styles.buttonRow}>
-              <button type="button" style={styles.bottomButton} onClick={this.handleShowAll}>All</button>
-              <button type="button" style={styles.bottomButton} onClick={this.handleShowActive}>Active</button>
-              <button type="button" style={styles.bottomButton} onClick={this.handleShowCompleted}>Completed</button>
+              <button type="button" style={styles.bottomButton} className="bottomButton" onClick={this.handleShowAll}>All</button>
+              <button type="button" style={styles.bottomButton} className="bottomButton" onClick={this.handleShowActive}>Active</button>
+              <button type="button" style={styles.bottomButton} className="bottomButton" onClick={this.handleShowCompleted}>Completed</button>
             </div>
-            <button type="button" style={styles.bottomButton} onClick={this.handleClear}>Clear Completed</button>
+            <button type="button" style={styles.bottomButton} className="clearCompleted" onClick={this.handleClear}>Clear Completed</button>
           </div>
         </div>
         <p style={styles.myName}>An App by J Cass</p>

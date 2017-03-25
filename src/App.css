@@ -4,3 +4,27 @@ html {
 *, *:before, *:after {
   box-sizing: inherit;
 }
+.itemsLeft:focus{
+	outline:0;
+}
+.clearCompleted:focus{
+	outline:0;
+}
+.clearCompleted:hover{
+	text-decoration: underline;
+}
+.bottomButton:focus{
+	outline: 0;
+	color: red;
+	font-weight: bold;
+	text-decoration: underline;
+}
+.listEntry{
+    padding: 20px;
+    background: white;
+    height: 65px;
+    width: 550px;
+    border-style:solid;
+    border-color: #DBDBDB;
+    border-width: 1px;
+}
