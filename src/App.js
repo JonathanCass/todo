@@ -64,7 +64,7 @@ var styles={
     borderWidth: '1px',
     color: '#4C4C4C',
     height: 65,
-    width: 550 
+    width: 550,
   },
   complete:{
     padding: 20,
@@ -75,7 +75,12 @@ var styles={
     borderWidth: '1px',
     color: '#DBDBDB',
     height: 65,
-    width: 550 
+    width: 550,
+  },
+  boxCheck:{
+    marginRight: 20,
+    height: 20,
+    width: 20
   },
   buttonRow:{
     display: 'flex',
@@ -169,10 +174,10 @@ var App=React.createClass({
           <ul style={styles.listText}>
             {this.state.display.map(function(item,i){
               if(this.state.completed.indexOf(item) > -1 ){
-                return <li style={styles.complete} key={i}><input type="checkBox" value={i} onChange={this.handleClick}></input>{item}</li>                 
+                return <li style={styles.complete} key={i}><input type="checkBox" style={styles.boxCheck} value={i} onChange={this.handleClick}></input>{item}</li>                 
                }
                else{
-                return <li style={styles.active} key={i}><input type="checkBox" value={i} onChange={this.handleClick}></input>{item}</li>
+                return <li style={styles.active} key={i}><input type="checkBox" style={styles.boxCheck} value={i} onChange={this.handleClick}></input>{item}</li>
               }
             }.bind(this))}
           </ul>
