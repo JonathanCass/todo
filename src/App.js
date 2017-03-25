@@ -9,7 +9,7 @@ var styles={
     margin: 'auto',
     width: 610,
     fontSize: 40,
-    //color: '#EAD7D7',
+    color: '#EAD7D7',
     borderRadius: 30
   },
   title:{
@@ -38,10 +38,7 @@ var styles={
     border: 0
   },
   centerBox: {
-    background: '#F4F4F4',
-    borderStyle:'solid',
-    borderColor: '#DBDBDB',
-    borderWidth: '1px',
+    background: 'red',
     width: 550,
     boxShadow: '10px 10px 5px grey',
     marginTop: 20
@@ -52,9 +49,6 @@ var styles={
     listStyle: 'none',
     padding:0,
     margin:0,
-    borderStyle:'solid',
-    borderColor: '#DBDBDB',
-    borderWidth: '1px'
   },
   active:{
     color: '#4C4C4C'
@@ -88,7 +82,7 @@ var styles={
     justifyContent: 'space-between',
     width: 550,
     height: 40,
-    background: 'white'
+    background: 'white',
   },
   noPointer: {
     height:40,
@@ -97,6 +91,10 @@ var styles={
     padding: 10,
     fontSize: 12,
     cursor: 'default'
+  },
+  deleteButton:{
+    position:'relative',
+    right: '-400px'
   }
 }
 var App=React.createClass({
@@ -164,19 +162,19 @@ var App=React.createClass({
         <p style={styles.title}> todos </p>
         <div style={styles.centerBox}>
           <form onSubmit={this.handleSubmit}>
-            <input type="text" onChange={this.handleChange} value={this.state.text} style={styles.input} placeholder="What needs to be done?" />
+            <input type="text" onChange={this.handleChange} value={this.state.text} style={styles.input} className="inputBar" placeholder="What needs to be done?" />
           </form>
           <ul style={styles.listText}>
             {this.state.display.map(function(item,i){
               if(this.state.completed.indexOf(item) > -1 ){
-                return <li style={styles.complete} className="listEntry" key={i}><input type="checkBox" style={styles.boxCheck} value={i} onChange={this.handleClick}></input>{item}</li>                 
+                return <li style={styles.complete} className="listEntry" key={i}><input type="checkBox" style={styles.boxCheck} value={i} onChange={this.handleClick}></input>{item}<button style={styles.deleteButton}></button></li>                 
                }
                else{
-                return <li style={styles.active} className="listEntry" key={i}><input type="checkBox" style={styles.boxCheck} value={i} onChange={this.handleClick}></input>{item}</li>
+                return <li style={styles.active} className="listEntry" key={i}><input type="checkBox" style={styles.boxCheck} value={i} onChange={this.handleClick}></input>{item}<button style={styles.deleteButton}></button></li>
               }
             }.bind(this))}
           </ul>
-          <div style={styles.bottomBar}>
+          <div style={styles.bottomBar} className="bottomBar">
             <button type="button" style={styles.noPointer} className="itemsLeft">Items left</button>
             <div style={styles.buttonRow}>
               <button type="button" style={styles.bottomButton} className="bottomButton" onClick={this.handleShowAll}>All</button>

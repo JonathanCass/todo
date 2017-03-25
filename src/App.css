@@ -24,7 +24,19 @@ html {
     background: white;
     height: 65px;
     width: 550px;
+    overflow: hidden;
     border-style:solid;
     border-color: #DBDBDB;
-    border-width: 1px;
+    border-width: 0 0 1px 0;
+}
+.inputBar:hover{
+	outline: 0;
+}
+.inputBar:focus{
+	outline: 0;
+}
+.bottomBar{
+	border-style:solid;
+    border-color: #DBDBDB;
+    border-width: 1px 0 0 0;
 }
