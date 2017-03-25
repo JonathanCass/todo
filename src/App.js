@@ -75,6 +75,7 @@ var styles={
     display: 'flex',
     justifyContent: 'space-between',
     width: 550,
+    height: 40,
     background: 'white'
   }
 }
@@ -155,17 +156,13 @@ var App=React.createClass({
             }.bind(this))}
           </ul>
           <div style={styles.bottomBar}>
-            <div>
-              <button type="button" style={styles.bottomButton}>Items left</button>
-            </div>
+            <button type="button" style={styles.bottomButton}>Items left</button>
             <div style={styles.buttonRow}>
               <button type="button" style={styles.bottomButton} onClick={this.handleShowAll}>All</button>
               <button type="button" style={styles.bottomButton} onClick={this.handleShowActive}>Active</button>
               <button type="button" style={styles.bottomButton} onClick={this.handleShowCompleted}>Completed</button>
-             </div>
-             <div> 
-              <button type="button" style={styles.bottomButton} onClick={this.handleClear}>Clear Completed</button>
             </div>
+            <button type="button" style={styles.bottomButton} onClick={this.handleClear}>Clear Completed</button>
           </div>
         </div>
       </div>
