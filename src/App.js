@@ -7,13 +7,14 @@ var styles={
     color: 'black',
     fontSize: 20,
     height: 65,
-    width: 550 
+    width: 550,
+    border: 0
   },
   centerBox: {
     background: 'grey',
     borderStyle:'solid',
     borderColor: '#DBDBDB',
-    borderWidth: '2px',
+    borderWidth: '1px',
     position: 'fixed',
     top: '40%',
     left: '50%',
@@ -52,11 +53,21 @@ var styles={
     display: 'flex',
     justifyContent: 'center',
     height: 40,
+    background: 'white',
+    border: 0
+  },
+  bottomButton: {
+    height:40,
+    background: 'white',
+    border: 0,
+    padding: 10,
+    fontSize: 12
+  },
+  bottomBar: {
+    display: 'flex',
+    justifyContent: 'space-between',
     width: 550,
     background: 'white'
-  },
-  clearCompletedButton: {
-  
   }
 }
 var App=React.createClass({
@@ -127,18 +138,25 @@ var App=React.createClass({
         <ul style={styles.listText}>
           {this.state.display.map(function(item,i){
             if(this.state.completed.indexOf(item) > -1 ){
-              return <li style={styles.complete} key={i}><input className="deleteButton" type="checkBox" value={i} onChange={this.handleClick}></input>{item}</li>                 
+              return <li style={styles.complete} key={i}><input type="checkBox" value={i} onChange={this.handleClick}></input>{item}</li>                 
              }
              else{
-              return <li style={styles.active} key={i}><input className="deleteButton" type="checkBox" value={i} onChange={this.handleClick}></input>{item}</li>
+              return <li style={styles.active} key={i}><input type="checkBox" value={i} onChange={this.handleClick}></input>{item}</li>
             }
           }.bind(this))}
         </ul>
-        <div style={styles.buttonRow}>
-          <button type="button" onClick={this.handleShowAll}>All</button>
-          <button type="button" onClick={this.handleShowActive}>Active</button>
-          <button type="button" onClick={this.handleShowCompleted}>Completed</button>
-          <button type="button" style={styles.clearCompletedButton} onClick={this.handleClear}>Clear Completed</button>
+        <div style={styles.bottomBar}>
+          <div>
+            <button type="button" style={styles.bottomButton}>Items left</button>
+          </div>
+          <div style={styles.buttonRow}>
+            <button type="button" style={styles.bottomButton} onClick={this.handleShowAll}>All</button>
+            <button type="button" style={styles.bottomButton} onClick={this.handleShowActive}>Active</button>
+            <button type="button" style={styles.bottomButton} onClick={this.handleShowCompleted}>Completed</button>
+           </div>
+           <div> 
+            <button type="button" style={styles.bottomButton} onClick={this.handleClear}>Clear Completed</button>
+          </div>
         </div>
       </div>
     )
