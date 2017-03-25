@@ -4,18 +4,35 @@ import './App.css'
 var styles={
   app: {
     background: '#F4F4F4',
-    padding: 40,
+    padding: 30,
+    paddingTop: 10,
     margin: 'auto',
-    width: 630,
+    width: 610,
     fontSize: 40,
-    textAlign: 'center',
     color: '#EAD7D7',
-    fontWeight: 'lighter'
+    borderRadius: 30
+  },
+  title:{
+    fontSize: 100,
+    margin: 0,
+    textAlign: 'center',
+    fontWeight: 'lighter',
+    fontFamily: 'Courier New',
+    color: '#5E194F'
+  },
+  myName:{
+    textAlign: 'right',
+    fontWeight: 'bold',
+    fontSize: 40,
+    marginTop: 40,
+    color: '#5E194F',
+    marginBottom: 0
   },
   input: {
     background: 'white',
     color: 'black',
-    fontSize: 20,
+    fontSize: 24,
+    paddingLeft: 20,
     height: 65,
     width: 550,
     border: 0
@@ -26,10 +43,11 @@ var styles={
     borderColor: '#DBDBDB',
     borderWidth: '1px',
     width: 550,
-    marginTop: 40
+    boxShadow: '10px 10px 5px grey',
+    marginTop: 20
   },
   listText:{
-    fontSize:20,
+    fontSize:24,
     fontWeight: 'lighter',
     listStyle: 'none',
     padding:0,
@@ -39,6 +57,7 @@ var styles={
     borderWidth: '1px'
   },
   active:{
+    padding: 20,
     background: 'white',
     borderStyle:'solid',
     borderColor: '#DBDBDB',
@@ -48,6 +67,7 @@ var styles={
     width: 550 
   },
   complete:{
+    padding: 20,
     background: 'white',
     textDecoration : 'line-through',
     borderStyle:'solid',
@@ -140,7 +160,8 @@ var App=React.createClass({
   },
   render() {
     return (
-      <div className="App" style={styles.app}> todos
+      <div className="App" style={styles.app}>
+        <p style={styles.title}> todos </p>
         <div style={styles.centerBox}>
           <form onSubmit={this.handleSubmit}>
             <input type="text" onChange={this.handleChange} value={this.state.text} style={styles.input} placeholder="What needs to be done?" />
@@ -165,6 +186,7 @@ var App=React.createClass({
             <button type="button" style={styles.bottomButton} onClick={this.handleClear}>Clear Completed</button>
           </div>
         </div>
+        <p style={styles.myName}>An App by J Cass</p>
       </div>
     )
   }
