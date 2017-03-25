@@ -2,6 +2,16 @@ import React from 'react'
 import './App.css'
 
 var styles={
+  app: {
+    background: '#F4F4F4',
+    padding: 40,
+    margin: 'auto',
+    width: 630,
+    fontSize: 40,
+    textAlign: 'center',
+    color: '#EAD7D7',
+    fontWeight: 'lighter'
+  },
   input: {
     background: 'white',
     color: 'black',
@@ -11,14 +21,12 @@ var styles={
     border: 0
   },
   centerBox: {
-    background: 'grey',
+    background: '#F4F4F4',
     borderStyle:'solid',
     borderColor: '#DBDBDB',
     borderWidth: '1px',
-    position: 'fixed',
-    top: '40%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)'
+    width: 550,
+    marginTop: 40
   },
   listText:{
     fontSize:20,
@@ -131,31 +139,33 @@ var App=React.createClass({
   },
   render() {
     return (
-      <div className="App" style={styles.centerBox}>
-        <form onSubmit={this.handleSubmit}>
-          <input type="text" onChange={this.handleChange} value={this.state.text} style={styles.input} placeholder="What needs to be done?" />
-        </form>
-        <ul style={styles.listText}>
-          {this.state.display.map(function(item,i){
-            if(this.state.completed.indexOf(item) > -1 ){
-              return <li style={styles.complete} key={i}><input type="checkBox" value={i} onChange={this.handleClick}></input>{item}</li>                 
-             }
-             else{
-              return <li style={styles.active} key={i}><input type="checkBox" value={i} onChange={this.handleClick}></input>{item}</li>
-            }
-          }.bind(this))}
-        </ul>
-        <div style={styles.bottomBar}>
-          <div>
-            <button type="button" style={styles.bottomButton}>Items left</button>
-          </div>
-          <div style={styles.buttonRow}>
-            <button type="button" style={styles.bottomButton} onClick={this.handleShowAll}>All</button>
-            <button type="button" style={styles.bottomButton} onClick={this.handleShowActive}>Active</button>
-            <button type="button" style={styles.bottomButton} onClick={this.handleShowCompleted}>Completed</button>
-           </div>
-           <div> 
-            <button type="button" style={styles.bottomButton} onClick={this.handleClear}>Clear Completed</button>
+      <div className="App" style={styles.app}> todos
+        <div style={styles.centerBox}>
+          <form onSubmit={this.handleSubmit}>
+            <input type="text" onChange={this.handleChange} value={this.state.text} style={styles.input} placeholder="What needs to be done?" />
+          </form>
+          <ul style={styles.listText}>
+            {this.state.display.map(function(item,i){
+              if(this.state.completed.indexOf(item) > -1 ){
+                return <li style={styles.complete} key={i}><input type="checkBox" value={i} onChange={this.handleClick}></input>{item}</li>                 
+               }
+               else{
+                return <li style={styles.active} key={i}><input type="checkBox" value={i} onChange={this.handleClick}></input>{item}</li>
+              }
+            }.bind(this))}
+          </ul>
+          <div style={styles.bottomBar}>
+            <div>
+              <button type="button" style={styles.bottomButton}>Items left</button>
+            </div>
+            <div style={styles.buttonRow}>
+              <button type="button" style={styles.bottomButton} onClick={this.handleShowAll}>All</button>
+              <button type="button" style={styles.bottomButton} onClick={this.handleShowActive}>Active</button>
+              <button type="button" style={styles.bottomButton} onClick={this.handleShowCompleted}>Completed</button>
+             </div>
+             <div> 
+              <button type="button" style={styles.bottomButton} onClick={this.handleClear}>Clear Completed</button>
+            </div>
           </div>
         </div>
       </div>
