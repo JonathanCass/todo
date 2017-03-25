@@ -14,8 +14,6 @@ If the completed filter is active when the clear completed button is clicked the
 
 The check box status (checked unchecked) is all over the place. Not sure how to fix that either. 
 
-If the list item inputted is unusually long it results in a poor result, likely solution - re find how to get the scroll working.
-
 Instructions:  
 Build a To do application using React  
 Allow entering in new items (text).    
