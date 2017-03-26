@@ -34,9 +34,8 @@ html {
 }
 .listEntry{
     font-family: 'Indie Flower', cursive;
-    padding: 20px;
     background: white;
-    height: 65px;
+    height: 50px;
     width: 550px;
     white-space: nowrap;
     overflow: hidden;
@@ -73,10 +72,15 @@ button:focus{
     border-width: 2px;
     background: white;
     border-radius:  25px;
+    margin: 15px;
 }
 .circleCheck:hover{
     outline: 0;
 }
 .circleCheck:focus{
     outline: 0;
+}
+.itemSpan{
+    border: 0px solid #FB5E62;
+    border-left-width: 2px;
 }

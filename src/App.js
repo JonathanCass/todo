@@ -43,6 +43,7 @@ var styles={
   },
   itemSpan:{
     width:400,
+    padding: 12,
     display: 'inline-block',
     overflow: 'hidden',
     textOverflow: 'ellipsis'
@@ -97,6 +98,7 @@ var styles={
     cursor: 'default'
   },
   deleteButton:{
+    padding: 15,
     float: 'right',
     border: 0,
     fontSize: 20,
@@ -221,10 +223,10 @@ var App=React.createClass({
           <ul style={styles.listText}>
             {this.state.display.map(function(item,i){
               if(this.state.completed.indexOf(item) > -1 ){
-                return <li style={styles.complete} className="listEntry" key={i}><input type="button" className="circleCheck" style={this.state.completed.indexOf(item) === -1 ? styles.boxUnchecked : styles.boxCheck} value={i} onClick={this.handleCheck}></input><span style={styles.itemSpan}>{item}</span><button className="deleteButton" style={this.state.filter === 0 ? styles.deleteButton : styles.hiddenDeleteButton} onClick={this.handleDelete} value={i}>X</button></li>                 
+                return <li style={styles.complete} className="listEntry" key={i}><input type="button" className="circleCheck" style={this.state.completed.indexOf(item) === -1 ? styles.boxUnchecked : styles.boxCheck} value={i} onClick={this.handleCheck}></input><span style={styles.itemSpan} className="itemSpan">{item}</span><button className="deleteButton" style={this.state.filter === 0 ? styles.deleteButton : styles.hiddenDeleteButton} onClick={this.handleDelete} value={i}>X</button></li>                 
                }
                else{
-                return <li style={styles.active} className="listEntry" key={i}><input type="button" className="circleCheck" style={this.state.completed.indexOf(item) === -1 ? styles.boxUnchecked : styles.boxCheck} value={i} onClick={this.handleCheck}></input><span style={styles.itemSpan}>{item}</span><button className="deleteButton" style={this.state.filter === 0 ? styles.deleteButton : styles.hiddenDeleteButton} onClick={this.handleDelete} value={i}>X</button></li>
+                return <li style={styles.active} className="listEntry" key={i}><input type="button" className="circleCheck" style={this.state.completed.indexOf(item) === -1 ? styles.boxUnchecked : styles.boxCheck} value={i} onClick={this.handleCheck}></input><span style={styles.itemSpan} className="itemSpan">{item}</span><button className="deleteButton" style={this.state.filter === 0 ? styles.deleteButton : styles.hiddenDeleteButton} onClick={this.handleDelete} value={i}>X</button></li>
               }
             }.bind(this))}
           </ul>
