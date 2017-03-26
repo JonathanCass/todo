@@ -14,7 +14,7 @@ Bonus Feature:
 Can now uncheck and recheck a list item.  
 
 Known Issues:  
-Deleting items from the All Filter and seems to work fine, however deleting items from the Active or Completed filter it seems to act as if the buttons were being clicked with the all filter active. Likely solution just dissapear the delete feature on those tabs. 
+Deleting items from the All Filter seems to work fine, however deleting items from the Active or Completed filter it seems to act as if the buttons were being clicked with the all filter active. Likely solution just dissapear the delete feature on those tabs. 
 
 Instructions:  
 Build an application for creating a to do list using React  
