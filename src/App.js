@@ -110,6 +110,9 @@ var styles={
     fontSize: 20,
     background: 'white',
     cursor: 'pointer'
+  },
+  hiddenDeleteButton:{
+    display:'none'
   }
 }
 var App=React.createClass({
@@ -136,7 +139,7 @@ var App=React.createClass({
     else if(this.state.list.indexOf(this.state.text) !== -1){
       alert("Items must have unique names.")
     }
-    else if(this.state.filter === 2){
+    else if(this.state.filter === 2){                         //checking if filter is on completed, prevents adding this new active item to the display array
       this.setState({
         list: [...this.state.list, this.state.text],
         text: ''
@@ -152,16 +155,15 @@ var App=React.createClass({
   },
 
   handleCheck(e) {
-    if(this.state.completed.indexOf(this.state.list[e.target.value]) !== -1){
+    if(this.state.completed.indexOf(this.state.list[e.target.value]) !== -1){         //checks to see if clicked item is in completed array
       this.setState({
-        completed: this.state.completed.filter((item)=>{
-          console.log('item = ',item, 'this.state.list[e.target.value] = ', this.state.list[e.target.value])
+        completed: this.state.completed.filter((item)=>{                              //this section removes the item from the completed array
           return(item !== this.state.list[e.target.value])
         })
       })
     }
     else{ 
-      this.setState({
+      this.setState({                                                                 //adding clicked item to completed array
         completed: [...this.state.completed, this.state.list[e.target.value]]  
       })
     }
@@ -176,13 +178,13 @@ var App=React.createClass({
       list: clearArray,
       display: clearArray
     })
-    if(this.state.filter === 2)
+    if(this.state.filter === 2)        // if the filter was set to completed simply clears the display array      
       this.setState({
         display: []
       })
   },
   handleDelete(e) {
-    this.setState({
+    this.setState({                    // finding the deleted item in each array and removing it
       completed: this.state.completed.filter((item)=>{
         return(item !== this.state.list[e.target.value])
       }),
@@ -195,7 +197,7 @@ var App=React.createClass({
     })
   },
   handleShowActive(e) {
-    this.setState({
+    this.setState({                                         
       display: this.state.list.filter((item)=>{
         return(this.state.completed.indexOf(item) < 0)
       }),
@@ -203,7 +205,7 @@ var App=React.createClass({
     })
   },
   handleShowCompleted(e) {
-    this.setState({
+    this.setState({                                       
       display: this.state.list.filter((item)=>{
         return(this.state.completed.indexOf(item) > -1)
       }),
@@ -227,15 +229,15 @@ var App=React.createClass({
           <ul style={styles.listText}>
             {this.state.display.map(function(item,i){
               if(this.state.completed.indexOf(item) > -1 ){
-                return <li style={styles.complete} className="listEntry" key={i}><input type="button" className="circleCheck" style={this.state.completed.indexOf(item) === -1 ? styles.boxUnchecked : styles.boxCheck} value={i} onClick={this.handleCheck}></input><span style={styles.itemSpan}>{item}</span><button className="deleteButton" style={styles.deleteButton} onClick={this.handleDelete} value={i}>X</button></li>                 
+                return <li style={styles.complete} className="listEntry" key={i}><input type="button" className="circleCheck" style={this.state.completed.indexOf(item) === -1 ? styles.boxUnchecked : styles.boxCheck} value={i} onClick={this.handleCheck}></input><span style={styles.itemSpan}>{item}</span><button className="deleteButton" style={this.state.filter === 0 ? styles.deleteButton : styles.hiddenDeleteButton} onClick={this.handleDelete} value={i}>X</button></li>                 
                }
                else{
-                return <li style={styles.active} className="listEntry" key={i}><input type="button" className="circleCheck" style={this.state.completed.indexOf(item) === -1 ? styles.boxUnchecked : styles.boxCheck} value={i} onClick={this.handleCheck}></input><span style={styles.itemSpan}>{item}</span><button className="deleteButton" style={styles.deleteButton} onClick={this.handleDelete} value={i}>X</button></li>
+                return <li style={styles.active} className="listEntry" key={i}><input type="button" className="circleCheck" style={this.state.completed.indexOf(item) === -1 ? styles.boxUnchecked : styles.boxCheck} value={i} onClick={this.handleCheck}></input><span style={styles.itemSpan}>{item}</span><button className="deleteButton" style={this.state.filter === 0 ? styles.deleteButton : styles.hiddenDeleteButton} onClick={this.handleDelete} value={i}>X</button></li>
               }
             }.bind(this))}
           </ul>
           <div style={styles.bottomBar} className="bottomBar">
-            <button type="button" style={styles.noPointer} className="itemsLeft">{this.state.list.length-this.state.completed.length} Items Left</button>
+            <button type="button" style={styles.noPointer} className="itemsLeft">{this.state.list.length-this.state.completed.length} Item{this.state.list.length-this.state.completed.length === 1 ? '' : 's'} Left</button>
             <div style={styles.buttonRow}>
               <button type="button" style={this.state.filter === 0 ? styles.bottomButtonOn : styles.bottomButton} className="bottomButton" onClick={this.handleShowAll}>All</button>
               <button type="button" style={this.state.filter === 1 ? styles.bottomButtonOn : styles.bottomButton} className="bottomButton" onClick={this.handleShowActive}>Active</button>
@@ -244,7 +246,7 @@ var App=React.createClass({
             <button type="button" style={styles.bottomButton} className="clearCompleted" onClick={this.handleClear}>Clear Completed</button>
           </div>
         </div>
-        <p style={styles.myName}>An App by J Cass</p>
+        <p style={styles.myName}>An App by J. Cass</p>
       </div>
     )
   }
