@@ -56,10 +56,11 @@ var styles={
     textOverflow: 'ellipsis'
   },
   active:{
-    color: '#4C4C4C'
+    color: 'black',
+    fontWeight: 'bold',
   },
   complete:{
-    textDecoration : 'line-through',  
+    textDecoration : 'underline',  
     color: '#DBDBDB' 
   },
   boxCheck:{
@@ -81,6 +82,11 @@ var styles={
     padding: 10,
     fontSize: 12,
     cursor: 'pointer'
+  },
+  bottomButtonOn: {
+    color: 'red',
+    fontWeight: 'bold',
+    textDecoration: 'underline'
   },
   bottomBar: {
     display: 'flex',
@@ -214,9 +220,9 @@ var App=React.createClass({
           <div style={styles.bottomBar} className="bottomBar">
             <button type="button" style={styles.noPointer} className="itemsLeft">{this.state.list.length-this.state.completed.length} Items Left</button>
             <div style={styles.buttonRow}>
-              <button type="button" style={styles.bottomButton} className="bottomButton" onClick={this.handleShowAll}>All</button>
-              <button type="button" style={styles.bottomButton} className="bottomButton" onClick={this.handleShowActive}>Active</button>
-              <button type="button" style={styles.bottomButton} className="bottomButton" onClick={this.handleShowCompleted}>Completed</button>
+              <button type="button" style={this.state.filter === 0 ? styles.bottomButtonOn : styles.bottomButton} className="bottomButton" onClick={this.handleShowAll}>All</button>
+              <button type="button" style={this.state.filter === 1 ? styles.bottomButtonOn : styles.bottomButton} className="bottomButton" onClick={this.handleShowActive}>Active</button>
+              <button type="button" style={this.state.filter === 2 ? styles.bottomButtonOn : styles.bottomButton} className="bottomButton" onClick={this.handleShowCompleted}>Completed</button>
             </div>
             <button type="button" style={styles.bottomButton} className="clearCompleted" onClick={this.handleClear}>Clear Completed</button>
           </div>

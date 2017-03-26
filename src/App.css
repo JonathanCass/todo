@@ -8,12 +8,16 @@ html {
 	outline:0;
 }
 .clearCompleted:hover{
-	text-decoration: underline;
-}
-.bottomButton:focus{
 	color: red;
-	font-weight: bold;
-	text-decoration: underline;
+    font-weight: bold;
+}
+.bottomButton, .clearCompleted{
+    height:40px;
+    background: white;
+    border: 0;
+    padding: 10;
+    font-size: 12px;
+    cursor: pointer;
 }
 .bottomButton:hover{
 	color: red;
@@ -46,4 +50,5 @@ button:focus{
 }
 .deleteButton:hover{
 	color:red;
+    font-weight: bold;
 }

@@ -5,14 +5,15 @@ All , Active, and Completed Filters working.
 Clear Completed button working.   
 Delete item button working.     
 Items left counter working.  
-Flexible list length.   
+Flexible list length.
+Adding items to the list while completed tab is active will not change display, those items will be visible once the all or active filter is selected.     
 
 Known Issues:  
 Requires unique names, likely solution - throw error and require new name on attempt to input nonunique name.  
 
-If the completed filter is active when the clear completed button is clicked the display automatically shows active items with no filter selected, likely solution - unknown at this time.
-
 The check box status (checked unchecked) is all over the place. Not sure how to fix that either. 
+
+Need to keep filters highlighted when the buttons lose focus.  
 
 Instructions:  
 Build a To do application using React  
