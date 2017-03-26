@@ -3,7 +3,6 @@ import './App.css'
 
 var styles={
   app: {
-    background: '#CBCED3',
     padding: 30,
     paddingTop: 10,
     margin: 'auto',
@@ -12,15 +11,8 @@ var styles={
     color: '#B2ACAB',
     borderRadius: 30
   },
-  title:{
-    fontSize: 100,
-    margin: 0,
-    textAlign: 'center',
-    fontWeight: 'lighter',
-    fontFamily: 'Courier New',
-    color: '#5E194F'
-  },
   myName:{
+    fontFamily: 'Special Elite',
     textAlign: 'right',
     fontWeight: 'bold',
     fontSize: 40,
@@ -43,7 +35,7 @@ var styles={
     marginTop: 20
   },
   listText:{
-    fontSize:19,
+    fontSize:22,
     fontWeight: 'lighter',
     listStyle: 'none',
     padding:0,
@@ -81,7 +73,7 @@ var styles={
     background: 'white',
     border: 0,
     padding: 10,
-    fontSize: 12,
+    fontSize: 14,
     cursor: 'pointer'
   },
   bottomButtonOn: {
@@ -101,7 +93,7 @@ var styles={
     background: 'white',
     border: 0,
     padding: 10,
-    fontSize: 12,
+    fontSize: 14,
     cursor: 'default'
   },
   deleteButton:{
@@ -220,8 +212,8 @@ var App=React.createClass({
   },
   render() {
     return (
-      <div className="App" style={styles.app}>
-        <p style={styles.title}> To Do: </p>
+      <div className="App">
+      <div style={styles.app}>
         <div style={styles.centerBox}>
           <form onSubmit={this.handleSubmit}>
             <input type="text" onChange={this.handleChange} value={this.state.text} style={styles.input} className="inputBar" placeholder="What needs to be done?" />
@@ -246,7 +238,8 @@ var App=React.createClass({
             <button type="button" style={styles.bottomButton} className="clearCompleted" onClick={this.handleClear}>Clear Completed</button>
           </div>
         </div>
-        <p style={styles.myName}>An App by J. Cass</p>
+        <p style={styles.myName}>An App by Jon Cass</p>
+      </div>
       </div>
     )
   }
