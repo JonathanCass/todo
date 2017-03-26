@@ -14,7 +14,7 @@ Free DLC:
 Fancy clipboard background and google fonts for that physical to do list feel.
 
 Note:
-The delete button is only present when the show all filter is active to prevent undesirable application behavior.   
+The delete button is only present when the show all filter is active to prevent undesirable application behavior. Addendum the check and uncheck functionality had to be limited to the all filter as well for similar reasons.   
 
 Assignment Instructions:  
 Build an application for creating a to do list using React  
