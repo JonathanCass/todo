@@ -10,6 +10,9 @@ Bonus Features:
 Can now uncheck and recheck a list item!
 Adding items to the list while completed tab is active will not change display, those items will be visible once the all or active filter is selected. 
 
+Free DLC:
+Fancy clipboard background and google fonts for that physical to do list feel.
+
 Note:
 The delete button is only present when the show all filter is active to prevent undesirable application behavior.   
 
