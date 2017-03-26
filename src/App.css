@@ -84,6 +84,11 @@ button:focus{
     border: 0px solid #FB5E62;
     border-left-width: 2px;
 }
+.itemSpanComplete{
+    text-decoration: line-through;
+    border: 0px solid #FB5E62;
+    border-left-width: 2px;
+}
 .itemsLeft{
     float: left;
     height: 40px;

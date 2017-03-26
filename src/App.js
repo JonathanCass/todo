@@ -53,7 +53,7 @@ var styles={
     fontWeight: 'bold',
   },
   complete:{
-    textDecoration : 'underline',  
+    textDecoration : 'line-through',  
     color: '#DBDBDB' 
   },
   boxCheck:{
@@ -149,7 +149,10 @@ var App=React.createClass({
   },
 
   handleCheck(e) {
-    if(this.state.completed.indexOf(this.state.list[e.target.value]) !== -1){         //checks to see if clicked item is in completed array
+    if(this.state.filter !== 0){
+      alert('At the moment Check Uncheck feature available from All filter only.')
+    }
+    else if(this.state.completed.indexOf(this.state.list[e.target.value]) !== -1){         //checks to see if clicked item is in completed array
       this.setState({
         completed: this.state.completed.filter((item)=>{                              //this section removes the item from the completed array
           return(item !== this.state.list[e.target.value])
@@ -223,7 +226,7 @@ var App=React.createClass({
           <ul style={styles.listText}>
             {this.state.display.map(function(item,i){
               if(this.state.completed.indexOf(item) > -1 ){
-                return <li style={styles.complete} className="listEntry" key={i}><input type="button" className="circleCheck" style={this.state.completed.indexOf(item) === -1 ? styles.boxUnchecked : styles.boxCheck} value={i} onClick={this.handleCheck}></input><span style={styles.itemSpan} className="itemSpan">{item}</span><button className="deleteButton" style={this.state.filter === 0 ? styles.deleteButton : styles.hiddenDeleteButton} onClick={this.handleDelete} value={i}>X</button></li>                 
+                return <li style={styles.complete} className="listEntry" key={i}><input type="button" className="circleCheck" style={this.state.completed.indexOf(item) === -1 ? styles.boxUnchecked : styles.boxCheck} value={i} onClick={this.handleCheck}></input><span style={styles.itemSpan} className="itemSpanComplete">{item}</span><button className="deleteButton" style={this.state.filter === 0 ? styles.deleteButton : styles.hiddenDeleteButton} onClick={this.handleDelete} value={i}>X</button></li>                 
                }
                else{
                 return <li style={styles.active} className="listEntry" key={i}><input type="button" className="circleCheck" style={this.state.completed.indexOf(item) === -1 ? styles.boxUnchecked : styles.boxCheck} value={i} onClick={this.handleCheck}></input><span style={styles.itemSpan} className="itemSpan">{item}</span><button className="deleteButton" style={this.state.filter === 0 ? styles.deleteButton : styles.hiddenDeleteButton} onClick={this.handleDelete} value={i}>X</button></li>
