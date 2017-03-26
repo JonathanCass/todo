@@ -231,7 +231,10 @@ var App=React.createClass({
             }.bind(this))}
           </ul>
           <div style={styles.bottomBar} className="bottomBar">
-            <button type="button" style={styles.noPointer} className="itemsLeft">{this.state.list.length-this.state.completed.length} Item{this.state.list.length-this.state.completed.length === 1 ? '' : 's'} Left</button>
+            <div>
+              <div className="redLineBottom"></div>
+              <button type="button" className="itemsLeft">{this.state.list.length-this.state.completed.length} Item{this.state.list.length-this.state.completed.length === 1 ? '' : 's'} Left</button>
+              </div>
             <div style={styles.buttonRow}>
               <button type="button" style={this.state.filter === 0 ? styles.bottomButtonOn : styles.bottomButton} className="bottomButton" onClick={this.handleShowAll}>All</button>
               <button type="button" style={this.state.filter === 1 ? styles.bottomButtonOn : styles.bottomButton} className="bottomButton" onClick={this.handleShowActive}>Active</button>
