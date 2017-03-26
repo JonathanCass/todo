@@ -52,3 +52,21 @@ button:focus{
 	color:red;
     font-weight: bold;
 }
+.circleCheck{
+    text-indent: -9999px;
+    float: left;
+    margin-right: 20px;
+    height: 20px;
+    width: 20px;
+    border-color: black;
+    cursor: pointer;
+    border-width: 2px;
+    background: white;
+    border-radius:  25px;
+}
+.circleCheck:hover{
+    outline: 0;
+}
+.circleCheck:focus{
+    outline: 0;
+}

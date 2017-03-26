@@ -5,18 +5,17 @@ All , Active, and Completed Filters working.
 Clear Completed button working.   
 Delete item button working.     
 Items left counter working.  
-Flexible list length.
+Flexible list length.  
 Adding items to the list while completed tab is active will not change display, those items will be visible once the all or active filter is selected.     
+
 
 Known Issues:  
 Requires unique names, likely solution - throw error and require new name on attempt to input nonunique name.  
 
-The check box status (checked unchecked) is all over the place. Not sure how to fix that either. 
-
-Need to keep filters highlighted when the buttons lose focus.  
+Also throw error for attempting to enter empty entries.
 
 Instructions:  
-Build a To do application using React  
+Build an application for creating a to do list using React  
 Allow entering in new items (text).    
 List out those items immediately below and be available when the page is refreshed.  
 

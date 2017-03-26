@@ -64,9 +64,10 @@ var styles={
     color: '#DBDBDB' 
   },
   boxCheck:{
-    marginRight: 20,
-    height: 20,
-    width: 20
+    background: 'black',
+  },
+  boxUnchecked:{
+    background: 'white',
   },
   buttonRow:{
     display: 'flex',
@@ -210,10 +211,10 @@ var App=React.createClass({
           <ul style={styles.listText}>
             {this.state.display.map(function(item,i){
               if(this.state.completed.indexOf(item) > -1 ){
-                return <li style={styles.complete} className="listEntry" key={i}><input type="checkBox" id={i} style={styles.boxCheck} value={i} onChange={this.handleCheck}></input><span style={styles.itemSpan}>{item}</span><button className="deleteButton" style={styles.deleteButton} onClick={this.handleDelete} value={i}>X</button></li>                 
+                return <li style={styles.complete} className="listEntry" key={i}><input type="button" className="circleCheck" style={this.state.completed.indexOf(item) === -1 ? styles.boxUnchecked : styles.boxCheck} value={i} onClick={this.handleCheck}></input><span style={styles.itemSpan}>{item}</span><button className="deleteButton" style={styles.deleteButton} onClick={this.handleDelete} value={i}>X</button></li>                 
                }
                else{
-                return <li style={styles.active} className="listEntry" key={i}><input type="checkBox" id={i} style={styles.boxCheck} value={i} onChange={this.handleCheck}></input><span style={styles.itemSpan}>{item}</span><button className="deleteButton" style={styles.deleteButton} onClick={this.handleDelete} value={i}>X</button></li>
+                return <li style={styles.active} className="listEntry" key={i}><input type="button" className="circleCheck" style={this.state.completed.indexOf(item) === -1 ? styles.boxUnchecked : styles.boxCheck} value={i} onClick={this.handleCheck}></input><span style={styles.itemSpan}>{item}</span><button className="deleteButton" style={styles.deleteButton} onClick={this.handleDelete} value={i}>X</button></li>
               }
             }.bind(this))}
           </ul>
