@@ -112,7 +112,7 @@ var App=React.createClass({
       completed: [],
       display: ['These items.','Are examples.','Provided for.','Testing purposes.'],
       text: '',
-      itemsRemaining: 0
+      filter: 0    // 0 for all, 1 for active, 2 for completed
     } 
   },
   handleChange(e) {
@@ -123,11 +123,19 @@ var App=React.createClass({
 
   handleSubmit(e) {
     e.preventDefault()
-    this.setState({
-      list: [...this.state.list, this.state.text],
-      display: [...this.state.display, this.state.text],
-      text: ''
-    })
+    if(this.state.filter === 2){
+      this.setState({
+        list: [...this.state.list, this.state.text],
+        text: ''
+      })
+    }
+    else{
+      this.setState({
+        list: [...this.state.list, this.state.text],
+        display: [...this.state.display, this.state.text],
+        text: ''
+      })
+    }
   },
 
   handleCheck(e) {
@@ -145,6 +153,10 @@ var App=React.createClass({
       list: clearArray,
       display: clearArray
     })
+    if(this.state.filter === 2)
+      this.setState({
+        display: []
+      })
   },
   handleDelete(e) {
     this.setState({
@@ -163,19 +175,22 @@ var App=React.createClass({
     this.setState({
       display: this.state.list.filter((item)=>{
         return(this.state.completed.indexOf(item) < 0)
-      })
+      }),
+      filter: 1
     })
   },
   handleShowCompleted(e) {
     this.setState({
       display: this.state.list.filter((item)=>{
         return(this.state.completed.indexOf(item) > -1)
-      })
+      }),
+      filter: 2
     })
   },
   handleShowAll(e) {
     this.setState({
-      display: this.state.list
+      display: this.state.list,
+      filter: 0
     })
   },
   render() {
@@ -189,10 +204,10 @@ var App=React.createClass({
           <ul style={styles.listText}>
             {this.state.display.map(function(item,i){
               if(this.state.completed.indexOf(item) > -1 ){
-                return <li style={styles.complete} className="listEntry" key={i}><input type="checkBox" style={styles.boxCheck} value={i} onChange={this.handleCheck}></input><span style={styles.itemSpan}>{item}</span><button className="deleteButton" style={styles.deleteButton} onClick={this.handleDelete} value={i}>X</button></li>                 
+                return <li style={styles.complete} className="listEntry" key={i}><input type="checkBox" id={i} style={styles.boxCheck} value={i} onChange={this.handleCheck}></input><span style={styles.itemSpan}>{item}</span><button className="deleteButton" style={styles.deleteButton} onClick={this.handleDelete} value={i}>X</button></li>                 
                }
                else{
-                return <li style={styles.active} className="listEntry" key={i}><input type="checkBox" style={styles.boxCheck} value={i} onChange={this.handleCheck}></input><span style={styles.itemSpan}>{item}</span><button className="deleteButton" style={styles.deleteButton} onClick={this.handleDelete} value={i}>X</button></li>
+                return <li style={styles.active} className="listEntry" key={i}><input type="checkBox" id={i} style={styles.boxCheck} value={i} onChange={this.handleCheck}></input><span style={styles.itemSpan}>{item}</span><button className="deleteButton" style={styles.deleteButton} onClick={this.handleDelete} value={i}>X</button></li>
               }
             }.bind(this))}
           </ul>
