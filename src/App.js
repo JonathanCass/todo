@@ -130,7 +130,13 @@ var App=React.createClass({
 
   handleSubmit(e) {
     e.preventDefault()
-    if(this.state.filter === 2){
+    if(this.state.text === ''){
+      alert("Empty String is invalid input.")
+    }
+    else if(this.state.list.indexOf(this.state.text) !== -1){
+      alert("Items must have unique names.")
+    }
+    else if(this.state.filter === 2){
       this.setState({
         list: [...this.state.list, this.state.text],
         text: ''
@@ -146,9 +152,19 @@ var App=React.createClass({
   },
 
   handleCheck(e) {
-    this.setState({
-      completed: [...this.state.completed, this.state.list[e.target.value]]  
-    })
+    if(this.state.completed.indexOf(this.state.list[e.target.value]) !== -1){
+      this.setState({
+        completed: this.state.completed.filter((item)=>{
+          console.log('item = ',item, 'this.state.list[e.target.value] = ', this.state.list[e.target.value])
+          return(item !== this.state.list[e.target.value])
+        })
+      })
+    }
+    else{ 
+      this.setState({
+        completed: [...this.state.completed, this.state.list[e.target.value]]  
+      })
+    }
   },
 
   handleClear(e) {
