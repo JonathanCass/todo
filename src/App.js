@@ -18,21 +18,23 @@ var styles={
     fontSize: 40,
     marginTop: 40,
     color: '#660000',
-    marginBottom: 0
+    marginBottom: 0,
   },
   input: {
     background: 'white',
     color: 'black',
     fontSize: 23,
-    paddingLeft: 20,
-    height: 65,
-    width: 550,
-    border: 0
+    paddingLeft: 18,
+    paddingTop: 6,
+    height: 72,
+    width: 548,
+    border: 0,
   },
   centerBox: {
     width: 550,
     boxShadow: '10px 10px 5px grey',
-    marginTop: 20
+    marginTop: 20,
+    background: 'white'
   },
   listText:{
     fontSize:22,
@@ -220,6 +222,8 @@ var App=React.createClass({
       <div className="App">
       <div style={styles.app}>
         <div style={styles.centerBox}>
+          <div className="redLineTop">
+          </div>
           <form onSubmit={this.handleSubmit}>
             <input type="text" onChange={this.handleChange} value={this.state.text} style={styles.input} className="inputBar" placeholder="What needs to be done?" />
           </form>

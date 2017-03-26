@@ -108,3 +108,12 @@ button:focus{
     position: relative;
     left: 50px;
 }
+.redLineTop{
+    height: 72px;
+    float: left;
+    display: inline-block;
+    width: 2px;
+    background-color: #FB5E62;
+    position: relative;
+    left: 50px;
+}
