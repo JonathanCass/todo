@@ -24,7 +24,7 @@ var styles={
     background: 'white',
     color: 'black',
     fontSize: 23,
-    paddingLeft: 18,
+    paddingLeft: 60,
     paddingTop: 6,
     height: 72,
     width: 548,

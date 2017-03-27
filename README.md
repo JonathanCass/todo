@@ -2,8 +2,8 @@ Features:
 Inputing list items and marking items complete working.    
 All , Active, and Completed Filters working and indicating correctly.   
 Clear Completed and Delete Item buttons fully functional.    
-Items left counter working with bonus working pluralizaion of the word item.
-Empty input will prevent list item being generated and give an error.
+Items left counter working with bonus working pluralizaion of the word item.  
+Empty input will prevent list item being generated and give an error.  
 Attempting to input an item identical to one already present will prevent item being generated and give an error.    
 
 Bonus Features:  
